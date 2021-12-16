@@ -16,8 +16,8 @@ def replace_val(data, column, mapping):
     data = data.replace({column: mapping})
     return data
 
-train_data = pd.read_csv(r'C:\Users\maxfe\Documents\datasets\titanic\train.csv')
-test_data = pd.read_csv(r'C:\Users\maxfe\Documents\datasets\titanic\test.csv')
+train_data = pd.read_csv('train.csv')
+test_data = pd.read_csv('test.csv')
 genders = {'male': 0, 'female': 1}
 train_data, test_data = replace_val(train_data, 'Sex', genders), replace_val(test_data, 'Sex', genders)
 
@@ -91,5 +91,5 @@ final_df = pd.DataFrame(np.c_[test_data['PassengerId'], y_pred])
 final_df.reset_index(drop=True, inplace=True)
 final_df.rename(columns={0: 'PassengerId', 1: 'Survived'}, inplace=True)
 
-final_df = final_df.to_csv(r'C:\Users\maxfe\Documents\datasets\titanic\hard_voting_clf_1.csv', index=False)
+final_df = final_df.to_csv('hard_voting_clf_output.csv', index=False)
 
